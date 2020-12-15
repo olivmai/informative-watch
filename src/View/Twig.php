@@ -8,21 +8,21 @@ use Twig\Error\RuntimeError;
 use Twig\Error\SyntaxError;
 use Twig\Loader\FilesystemLoader;
 
-class Twig
+class Twig implements ViewInterface
 {
     /**
      * @param string $template
-     * @param array $option
+     * @param array $options
      * @return string
      * @throws LoaderError
      * @throws RuntimeError
      * @throws SyntaxError
      */
-    public static function render(string $template, array $option = [])
+    public function render(string $template, array $options = []): string
     {
         $loader = new FilesystemLoader(TEMPLATES_DIR);
         $twig = new Environment($loader, []);
 
-        return $twig->render($template, $option);
+        return $twig->render($template, $options);
     }
 }
