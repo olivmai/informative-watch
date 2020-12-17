@@ -14,7 +14,6 @@ class PdoClient implements DatabaseClientInterface
     /**
      * PdoClient constructor is private as we want to call it only via PdoClient::getInstance().
      * Only purpose of this constructor is to set up config settings for pdo instance
-     * See AbstractDatabaseClient for more
      */
     private function __construct()
     {
