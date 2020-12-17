@@ -2,3 +2,4 @@
 /vendor/
 .idea
 /config/db_config.php
+/.php_cs.cache

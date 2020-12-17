@@ -2,7 +2,7 @@
 
 namespace App\Domain\InformationSource\Model;
 
-use App\Database\DatabaseClientInterface;
+use App\Database\PdoClient;
 use App\Database\RepositoryInterface;
 use App\Domain\InformationSource\InformationSourceException;
 use PDO;
@@ -10,9 +10,9 @@ use PDOException;
 
 class InformationSourceRepository implements RepositoryInterface
 {
-    private DatabaseClientInterface $dbClient;
+    private PdoClient $dbClient;
 
-    public function __construct(DatabaseClientInterface $dbClient)
+    public function __construct(PdoClient $dbClient)
     {
         $this->dbClient = $dbClient;
     }
@@ -29,13 +29,12 @@ class InformationSourceRepository implements RepositoryInterface
             $stmt->bindParam(':title', $data['title'], PDO::PARAM_STR);
             $stmt->bindParam(':url', $data['url'], PDO::PARAM_STR);
             $stmt->bindParam(':image', $data['image'], PDO::PARAM_STR);
-            $stmt->bindParam(':description', $data['description'],PDO::PARAM_STR);
+            $stmt->bindParam(':description', $data['description'], PDO::PARAM_STR);
 
             $stmt->execute();
         } catch (PDOException $exception) {
             throw new InformationSourceException($exception->getMessage());
         }
-
     }
 
     /**
@@ -112,6 +111,5 @@ class InformationSourceRepository implements RepositoryInterface
         } catch (PDOException $exception) {
             throw new InformationSourceException($exception->getMessage());
         }
-
     }
 }
