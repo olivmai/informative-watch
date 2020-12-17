@@ -2,8 +2,6 @@
 
 namespace App\Database;
 
-require_once __DIR__ . '/../../config/db_config.php';
-
 use PDO;
 
 class PdoClient extends AbstractPdoClient implements DatabaseClientInterface

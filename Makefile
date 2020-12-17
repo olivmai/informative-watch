@@ -8,5 +8,6 @@ phpcs:
 	vendor/bin/php-cs-fixer fix src
 
 check:
+	@make phpcs
 	@make phpstan
 	@make test
