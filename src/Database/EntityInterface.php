@@ -4,5 +4,4 @@ namespace App\Database;
 
 interface EntityInterface
 {
-
 }

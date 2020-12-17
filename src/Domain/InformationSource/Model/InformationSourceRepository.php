@@ -29,13 +29,12 @@ class InformationSourceRepository implements RepositoryInterface
             $stmt->bindParam(':title', $data['title'], PDO::PARAM_STR);
             $stmt->bindParam(':url', $data['url'], PDO::PARAM_STR);
             $stmt->bindParam(':image', $data['image'], PDO::PARAM_STR);
-            $stmt->bindParam(':description', $data['description'],PDO::PARAM_STR);
+            $stmt->bindParam(':description', $data['description'], PDO::PARAM_STR);
 
             $stmt->execute();
         } catch (PDOException $exception) {
             throw new InformationSourceException($exception->getMessage());
         }
-
     }
 
     /**
@@ -112,6 +111,5 @@ class InformationSourceRepository implements RepositoryInterface
         } catch (PDOException $exception) {
             throw new InformationSourceException($exception->getMessage());
         }
-
     }
 }

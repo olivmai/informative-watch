@@ -19,8 +19,8 @@ class Router
      */
     public function handle(RequestInterface $request): string
     {
-        switch($request->getPath()) {
-            default;
+        switch ($request->getPath()) {
+            default:
             case '/':
                 http_response_code(200);
                 return $this->view->render('homepage.html.twig');

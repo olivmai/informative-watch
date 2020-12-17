@@ -4,5 +4,5 @@ namespace App\Database;
 
 interface DatabaseClientInterface
 {
-    static function getInstance(): ?DatabaseClientInterface;
+    public static function getInstance(): ?DatabaseClientInterface;
 }

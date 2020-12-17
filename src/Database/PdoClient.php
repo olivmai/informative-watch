@@ -11,7 +11,9 @@ class PdoClient extends AbstractPdoClient implements DatabaseClientInterface
     public static ?DatabaseClientInterface $instance = null;
     public PDO $connexion;
 
-    private function __clone() {}
+    private function __clone()
+    {
+    }
 
     public static function getInstance(): ?DatabaseClientInterface
     {
