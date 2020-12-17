@@ -2,7 +2,9 @@
 
 namespace App\Domain\InformationSource\Model;
 
-class InformationSource
+use App\Database\EntityInterface;
+
+class InformationSource implements EntityInterface
 {
     private string $title;
     private string $url;

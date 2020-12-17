@@ -2,7 +2,7 @@
 
 namespace App\Domain\InformationSource\Model;
 
-use App\Database\DatabaseClientInterface;
+use App\Database\PdoClient;
 use App\Database\RepositoryInterface;
 use App\Domain\InformationSource\InformationSourceException;
 use PDO;
@@ -10,9 +10,9 @@ use PDOException;
 
 class InformationSourceRepository implements RepositoryInterface
 {
-    private DatabaseClientInterface $dbClient;
+    private PdoClient $dbClient;
 
-    public function __construct(DatabaseClientInterface $dbClient)
+    public function __construct(PdoClient $dbClient)
     {
         $this->dbClient = $dbClient;
     }

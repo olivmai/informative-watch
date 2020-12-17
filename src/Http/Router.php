@@ -23,12 +23,10 @@ class Router
             default;
             case '/':
                 http_response_code(200);
-                echo $this->view->render('homepage.html.twig');
-                break;
+                return $this->view->render('homepage.html.twig');
             case '/admin':
                 http_response_code(200);
-                echo $this->view->render('admin.html.twig');
-                break;
+                return $this->view->render('admin.html.twig');
         }
     }
 }
