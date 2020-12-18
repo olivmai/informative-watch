@@ -1,7 +1,7 @@
 <?php
 
-const SERVER = '';
-const PORT = '';
-const DB_USER = '';
-const DB_PASSWD = '';
-const DB_NAME = '';
+const SERVER = 'localhost';
+const PORT = '3306';
+const DB_USER = 'root';
+const DB_PASSWD = 'root';
+const DB_NAME = 'info_watch_test';

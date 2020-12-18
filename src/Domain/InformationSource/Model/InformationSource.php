@@ -19,6 +19,16 @@ class InformationSource implements EntityInterface
         $this->description = $description;
     }
 
+    public function toArray(): array
+    {
+        return [
+            'title' => $this->getTitle(),
+            'url' => $this->getUrl(),
+            'image' => $this->getImage(),
+            'description' => $this->getDescription(),
+        ];
+    }
+
     public function getTitle(): string
     {
         return $this->title;
