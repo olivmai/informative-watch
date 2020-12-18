@@ -2,6 +2,7 @@
 
 namespace App\Domain\InformationSource\Model;
 
+use App\Database\EntityInterface;
 use App\Database\PdoClient;
 use App\Domain\InformationSource\InformationSourceException;
 use PDO;
@@ -17,11 +18,11 @@ class InformationSourceRepository
     }
 
     /**
-     * @param InformationSource $informationSource
+     * @param EntityInterface|InformationSource $informationSource
      * @return int
      * @throws InformationSourceException
      */
-    public function insert(InformationSource $informationSource): int
+    public function insert(EntityInterface $informationSource): int
     {
         $data = $informationSource->toArray();
 

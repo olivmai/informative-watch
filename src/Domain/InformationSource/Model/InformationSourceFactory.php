@@ -6,11 +6,15 @@ class InformationSourceFactory
 {
     public static function create(array $attributes): InformationSource
     {
-        return new InformationSource(
+        $source = new InformationSource(
             $attributes['title'],
             $attributes['url'],
             $attributes['image'],
             $attributes['description']
         );
+
+        $source->setId($attributes['id']);
+
+        return $source;
     }
 }

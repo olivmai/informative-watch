@@ -1,5 +1,7 @@
 <?php
 
+namespace Test\Domain\InformationSource\Model;
+
 require __DIR__ . '/../../../../config/db_config_test.php';
 
 use App\Database\PdoClient;
@@ -12,6 +14,7 @@ class InformationSourceRepositoryTest extends TestCase
     public function testCanCreateInformationSource(): void
     {
         $newInformationSource = InformationSourceFactory::create([
+            'id' => null,
             'title'=> 'Le tdd en php',
             'url' => 'https://youtu.be/cWyOA0iIqKc',
             'image' => 'lior-chamla.jpeg',
