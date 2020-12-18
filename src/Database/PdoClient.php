@@ -6,14 +6,14 @@ use PDO;
 
 class PdoClient extends AbstractPdoClient implements DatabaseClientInterface
 {
-    public static ?DatabaseClientInterface $instance = null;
+    public static ?PdoClient $instance = null;
     public PDO $connexion;
 
     private function __clone()
     {
     }
 
-    public static function getInstance(): ?DatabaseClientInterface
+    public static function getInstance(): PdoClient
     {
         if (null === self::$instance) {
             self::$instance = new self();

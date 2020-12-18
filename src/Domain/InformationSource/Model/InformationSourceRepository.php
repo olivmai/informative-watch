@@ -3,12 +3,11 @@
 namespace App\Domain\InformationSource\Model;
 
 use App\Database\PdoClient;
-use App\Database\RepositoryInterface;
 use App\Domain\InformationSource\InformationSourceException;
 use PDO;
 use PDOException;
 
-class InformationSourceRepository implements RepositoryInterface
+class InformationSourceRepository
 {
     private PdoClient $dbClient;
 
@@ -18,11 +17,14 @@ class InformationSourceRepository implements RepositoryInterface
     }
 
     /**
-     * @param array $data
+     * @param InformationSource $informationSource
+     * @return int
      * @throws InformationSourceException
      */
-    public function insert(array $data): void
+    public function insert(InformationSource $informationSource): int
     {
+        $data = $informationSource->toArray();
+
         try {
             $stmt = $this->dbClient->getConnexion()->prepare("INSERT INTO sources (title, url, image, description) VALUES (:title, :url, :image, :description)");
 
@@ -35,6 +37,8 @@ class InformationSourceRepository implements RepositoryInterface
         } catch (PDOException $exception) {
             throw new InformationSourceException($exception->getMessage());
         }
+
+        return (int)$this->dbClient->getConnexion()->lastInsertId();
     }
 
     /**
@@ -76,9 +80,10 @@ class InformationSourceRepository implements RepositoryInterface
     /**
      * @param int $entityId
      * @param array $dataToUpdate
+     * @return int
      * @throws InformationSourceException
      */
-    public function update(int $entityId, array $dataToUpdate): void
+    public function update(int $entityId, array $dataToUpdate): int
     {
         $params = " ";
         foreach ($dataToUpdate as $paramKey => $paramNewValue) {
@@ -96,6 +101,8 @@ class InformationSourceRepository implements RepositoryInterface
         } catch (PDOException $exception) {
             throw new InformationSourceException($exception->getMessage());
         }
+
+        return $entityId;
     }
 
     /**
