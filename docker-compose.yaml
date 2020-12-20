@@ -1,0 +1,13 @@
+version: '3.2'
+
+services:
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+      MYSQL_DATABASE: info_watch_test
+    ports:
+      - 3306:3306
+    container_name: info_watch_test_sql
