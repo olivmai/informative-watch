@@ -1,6 +1,9 @@
 {
   "autoload": {
-    "psr-4": {"App\\": "src/", "Test\\":  "tests/"}
+    "psr-4": {
+      "App\\": "src/",
+      "Test\\": "tests/"
+    }
   },
   "require": {
     "twig/twig": "^3.0"

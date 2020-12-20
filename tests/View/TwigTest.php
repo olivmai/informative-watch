@@ -1,5 +1,7 @@
 <?php
 
+namespace Test\View;
+
 require_once __DIR__ . '/../../config/config_test.php';
 
 use App\View\Twig;

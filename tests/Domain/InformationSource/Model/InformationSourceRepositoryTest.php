@@ -8,9 +8,18 @@ use App\Database\PdoClient;
 use App\Domain\InformationSource\Model\InformationSourceFactory;
 use App\Domain\InformationSource\Model\InformationSourceRepository;
 use PHPUnit\Framework\TestCase;
+use Test\InitDatabaseSchema;
 
 class InformationSourceRepositoryTest extends TestCase
 {
+    use InitDatabaseSchema;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->initDatabaseSchema();
+    }
+
     public function testCanCreateInformationSource(): void
     {
         $newInformationSource = InformationSourceFactory::create([
