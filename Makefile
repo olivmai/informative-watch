@@ -1,3 +1,10 @@
+start:
+	docker-compose up -d
+	php -S localhost:8000
+
+stop:
+	docker-compose stop
+
 test:
 	php vendor/bin/phpunit -c phpunit.xml
 
