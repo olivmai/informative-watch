@@ -4,11 +4,12 @@ namespace App\Domain\InformationSource\Model;
 
 use App\Database\EntityInterface;
 use App\Database\PdoClient;
+use App\Database\RepositoryInterface;
 use App\Domain\InformationSource\InformationSourceException;
 use PDO;
 use PDOException;
 
-class InformationSourceRepository
+class InformationSourceRepository implements RepositoryInterface
 {
     private PdoClient $dbClient;
 

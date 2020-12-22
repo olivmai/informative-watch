@@ -4,15 +4,16 @@ namespace App\Domain\InformationSource\Model;
 
 use App\Database\EntityInterface;
 use App\Database\PdoClient;
+use App\Database\RepositoryInterface;
 use App\Domain\InformationSource\InformationSourceException;
 
 class InformationSourceModelManager implements ModelManagerInterface
 {
-    private InformationSourceRepository $sourceRepository;
+    private RepositoryInterface $repository;
 
-    public function __construct()
+    public function __construct(RepositoryInterface $repository)
     {
-        $this->sourceRepository = new InformationSourceRepository(PdoClient::getInstance());
+        $this->repository = $repository;
     }
 
     /**
@@ -23,7 +24,7 @@ class InformationSourceModelManager implements ModelManagerInterface
     public function save(EntityInterface $source): EntityInterface
     {
         try {
-            $id = $this->sourceRepository->insert($source);
+            $id = $this->repository->insert($source);
             $source->setId($id);
         } catch (InformationSourceException $exception) {
             throw new InformationSourceException($exception->getMessage());
