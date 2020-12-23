@@ -23,6 +23,7 @@ class InformationSourceRepositoryTest extends TestCase
     public function testCanCreateInformationSource(): void
     {
         $newInformationSource = InformationSourceFactory::create([
+            'id' => null,
             'title'=> 'Le tdd en php',
             'url' => 'https://youtu.be/cWyOA0iIqKc',
             'image' => 'lior-chamla.jpeg',
