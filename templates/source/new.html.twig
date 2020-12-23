@@ -1,0 +1,29 @@
+{% extends 'app_layout.html.twig' %}
+
+{% block page_title %}
+    New source
+{% endblock %}
+
+{% block content %}
+    <h1>New source</h1>
+    <form action="/source/new" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="infoSourceTitle" class="form-label">Title</label>
+            <input type="text" class="form-control" id="infoSourceTitle" name="title" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="infoSourceUrl" class="form-label">Url</label>
+            <input type="text" class="form-control" id="infoSourceUrl" name="url">
+        </div>
+        <div class="mb-3">
+            <label for="infoSourceTextarea" class="form-label">Description</label>
+            <textarea class="form-control" id="infoSourceTextarea" rows="3" name="description"></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Image</label>
+            <input type="hidden" name="MAX_FILE_SIZE" value="50000000" />
+            <input class="form-control" type="file" id="formFile" name="image">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}

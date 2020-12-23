@@ -9,16 +9,17 @@ require_once __DIR__ . '/config/config.php';
 require_once __DIR__ . '/config/db_config.php';
 
 $path = isset($_SERVER['PATH_INFO']) ? $_SERVER['PATH_INFO'] : '/';
+$files = $_FILES;
 
 $request = new Request([
     'path' => $path,
     'method' => $_SERVER['REQUEST_METHOD'],
-    'parameters' => $_REQUEST
+    'parameters' => array_merge($_REQUEST, $files)
 ]);
 
 $request->setPath($path);
 $request->setMethod($_SERVER['REQUEST_METHOD']);
-$request->setParameters($_REQUEST);
+$request->setParameters(array_merge($_REQUEST, $files));
 
 $router = new Router(new Twig());
 $router->handle($request);

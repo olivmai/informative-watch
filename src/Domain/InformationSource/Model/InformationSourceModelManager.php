@@ -32,4 +32,41 @@ class InformationSourceModelManager implements ModelManagerInterface
 
         return $source;
     }
+
+    /**
+     * @param EntityInterface $source
+     * @return int
+     * @throws InformationSourceException
+     */
+    public function delete(EntityInterface $source): int
+    {
+        try {
+            $id = $this->repository->delete($source->getId());
+        } catch (\Exception $exception) {
+            throw new InformationSourceException($exception->getMessage());
+        }
+
+        return $id;
+    }
+
+    /**
+     * @param int $id
+     * @return EntityInterface|null
+     * @throws InformationSourceException
+     */
+    public function find(int $id): ?EntityInterface
+    {
+        return $this->repository->find($id);
+    }
+
+    public function findAll(): array
+    {
+        $sources = [];
+        $results = $this->repository->findAll();
+        foreach ($results as $source) {
+            $sources[] = InformationSourceFactory::create($source);
+        }
+
+        return $sources;
+    }
 }
