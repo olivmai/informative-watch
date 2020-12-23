@@ -15,15 +15,15 @@ class Router
 
     /**
      * @param RequestInterface $request
-     * @return string
      */
-    public function handle(RequestInterface $request): string
+    public function handle(RequestInterface $request): void
     {
         switch ($request->getPath()) {
             default:
             case '/':
                 http_response_code(200);
                 echo $this->view->render('homepage.html.twig');
+                // no break
             case '/admin':
                 http_response_code(200);
                 echo $this->view->render('admin.html.twig');
