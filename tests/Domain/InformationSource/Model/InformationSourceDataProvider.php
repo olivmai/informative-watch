@@ -7,6 +7,10 @@ use App\Domain\InformationSource\Model\InformationSourceFactory;
 
 class InformationSourceDataProvider
 {
+    /**
+     * @coversNothing
+     * @return InformationSource
+     */
     public static function getOne(): InformationSource
     {
         return InformationSourceFactory::create([
