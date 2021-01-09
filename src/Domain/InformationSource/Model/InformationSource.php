@@ -6,7 +6,7 @@ use App\Database\EntityInterface;
 
 class InformationSource implements EntityInterface
 {
-    private ?int $id;
+    private int $id;
     private string $title;
     private string $url;
     private string $image;
@@ -70,12 +70,12 @@ class InformationSource implements EntityInterface
         $this->description = $description;
     }
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function setId(int $id = null): void
+    public function setId(int $id): void
     {
         $this->id = $id;
     }

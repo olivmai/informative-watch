@@ -8,6 +8,7 @@ use App\Database\PdoClient;
 use App\Domain\InformationSource\InformationSourceException;
 use App\Domain\InformationSource\Model\InformationSourceFactory;
 use App\Domain\InformationSource\Model\InformationSourceRepository;
+use Exception;
 use PHPUnit\Framework\TestCase;
 use Test\InitDatabaseSchema;
 
@@ -33,17 +34,11 @@ class InformationSourceRepositoryTest extends TestCase
     /**
      * @covers \App\Domain\InformationSource\Model\InformationSourceRepository::insert
      * @throws InformationSourceException
+     * @throws Exception
      */
     public function testCanCreateInformationSource(): void
     {
-        $newInformationSource = InformationSourceFactory::create([
-            'id' => null,
-            'title'=> 'Le tdd en php',
-            'url' => 'https://youtu.be/cWyOA0iIqKc',
-            'image' => 'lior-chamla.jpeg',
-            'description' => 'Vidéo live coding de Lior Chamla',
-            'error' => 'bug',
-        ]);
+        $newInformationSource = InformationSourceDataProvider::getOne();
 
         $repo = new InformationSourceRepository(PdoClient::getInstance());
 

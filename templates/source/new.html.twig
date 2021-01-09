@@ -5,8 +5,8 @@
 {% endblock %}
 
 {% block content %}
-    <h1>New source</h1>
-    <form action="/source/new" method="post" enctype="multipart/form-data">
+    <h1 class="text-center m-3">Ajouter une nouvelle source</h1>
+    <form action="/source/new" method="post" enctype="multipart/form-data" class="p-4 shadow">
         <div class="mb-3">
             <label for="infoSourceTitle" class="form-label">Title</label>
             <input type="text" class="form-control" id="infoSourceTitle" name="title" aria-describedby="emailHelp">

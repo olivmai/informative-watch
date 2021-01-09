@@ -44,7 +44,7 @@ class InformationSourceRepository implements RepositoryInterface
     }
 
     /**
-     * @return array|null
+     * @return array
      * @throws InformationSourceException
      */
     public function findAll(): array
@@ -112,8 +112,12 @@ class InformationSourceRepository implements RepositoryInterface
      * @return int
      * @throws InformationSourceException
      */
-    public function delete(int $id): int
+    public function delete(?int $id): int
     {
+        if (null === $id) {
+            throw new InformationSourceException('No id found for source removing');
+        }
+
         try {
             $stmt = $this->dbClient->getConnexion()->prepare("DELETE FROM sources WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);

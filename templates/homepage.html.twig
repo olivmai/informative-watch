@@ -7,23 +7,10 @@ Homepage
 {% block content %}
     <h1>Homepage</h1>
     <div class="row row-cols-auto">
-        <div class="col col-xs-12">
-            {% include 'source/card.html.twig' %}
-        </div>
-        <div class="col col-xs-12">
-            {% include 'source/card.html.twig' %}
-        </div>
-        <div class="col col-xs-12">
-            {% include 'source/card.html.twig' %}
-        </div>
-        <div class="col col-xs-12">
-            {% include 'source/card.html.twig' %}
-        </div>
-        <div class="col col-xs-12">
-            {% include 'source/card.html.twig' %}
-        </div>
-        <div class="col col-xs-12">
-            {% include 'source/card.html.twig' %}
-        </div>
+        {% for source in sources %}
+            <div class="col col-xs-12">
+                {% include 'source/card.html.twig' %}
+            </div>
+        {% endfor %}
     </div>
 {% endblock %}

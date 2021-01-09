@@ -23,7 +23,7 @@ class InformationSourceController
      */
     public function addNewSource(RequestInterface $request): void
     {
-        $params = $request->getParameters();
+        $params = $request->getParameters() ?: [];
 
         if (!array_key_exists('image', $params)) {
             throw new Exception('No file found for upload');
@@ -44,9 +44,7 @@ class InformationSourceController
 
         $this->sourceManager->save($newSource);
 
-        echo 'OK';
-
-        /*header('Location: /');
-        exit();*/
+        header('Location: ' . $_SERVER['SERVER_NAME']);
+        exit();
     }
 }
