@@ -44,10 +44,10 @@ class InformationSourceRepository implements RepositoryInterface
     }
 
     /**
-     * @return array|null
+     * @return array
      * @throws InformationSourceException
      */
-    public function getAll(): ?array
+    public function findAll(): array
     {
         try {
             $stmt = $this->dbClient->getConnexion()->prepare("SELECT * FROM sources");
@@ -56,7 +56,7 @@ class InformationSourceRepository implements RepositoryInterface
             throw new InformationSourceException($exception->getMessage());
         }
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: null;
+        return $stmt->fetchAll(PDO::FETCH_ASSOC) ?: [];
     }
 
     /**
@@ -64,7 +64,7 @@ class InformationSourceRepository implements RepositoryInterface
      * @return InformationSource|null
      * @throws InformationSourceException
      */
-    public function getOne(int $id): ?InformationSource
+    public function find(int $id): ?InformationSource
     {
         try {
             $stmt = $this->dbClient->getConnexion()->prepare("SELECT * FROM sources WHERE id = :id");
@@ -109,10 +109,15 @@ class InformationSourceRepository implements RepositoryInterface
 
     /**
      * @param int $id
+     * @return int
      * @throws InformationSourceException
      */
-    public function delete(int $id): void
+    public function delete(?int $id): int
     {
+        if (null === $id) {
+            throw new InformationSourceException('No id found for source removing');
+        }
+
         try {
             $stmt = $this->dbClient->getConnexion()->prepare("DELETE FROM sources WHERE id = :id");
             $stmt->bindParam(':id', $id, PDO::PARAM_INT);
@@ -120,5 +125,7 @@ class InformationSourceRepository implements RepositoryInterface
         } catch (PDOException $exception) {
             throw new InformationSourceException($exception->getMessage());
         }
+
+        return $id;
     }
 }

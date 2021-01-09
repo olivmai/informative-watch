@@ -4,3 +4,6 @@
 /config/db_config.php
 /.php_cs.cache
 /.docker/db/data/.mysql
+/public/upload/*
+/.phpunit.cache/
+/tests/coverage/

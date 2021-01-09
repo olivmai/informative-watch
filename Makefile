@@ -6,7 +6,7 @@ stop:
 	docker-compose stop
 
 test:
-	php vendor/bin/phpunit -c phpunit.xml
+	php vendor/bin/phpunit -c phpunit.xml --coverage-html tests/coverage
 
 phpstan:
 	vendor/bin/phpstan analyse -l 8 src tests
