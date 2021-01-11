@@ -31,6 +31,12 @@ class InformationSourceRepositoryTest extends TestCase
         $this->initDatabaseSchema();
     }
 
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        $this->truncateTables();
+    }
+
     /**
      * @covers \App\Domain\InformationSource\Model\InformationSourceRepository::insert
      * @throws InformationSourceException
