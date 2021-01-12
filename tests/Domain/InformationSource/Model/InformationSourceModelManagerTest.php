@@ -30,6 +30,12 @@ class InformationSourceModelManagerTest extends TestCase
         $this->initDatabaseSchema();
     }
 
+    protected function tearDown(): void
+    {
+        parent::tearDown();
+        $this->truncateTables();
+    }
+
     /**
      * @covers \App\Domain\InformationSource\Model\InformationSourceModelManager::save
      * @throws InformationSourceException
