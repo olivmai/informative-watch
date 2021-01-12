@@ -15,6 +15,6 @@ class FileUploader
             return null;
         }
 
-        return $uploadFileCompletePath;
+        return IMG_PUBLIC_DIR . $fileName;
     }
 }

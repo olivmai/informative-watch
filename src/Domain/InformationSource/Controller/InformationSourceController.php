@@ -36,6 +36,7 @@ class InformationSourceController
         }
 
         $newSource = InformationSourceFactory::create([
+            'id' => random_int(1, 999),
             'title' => $params['title'],
             'url' => $params['url'],
             'image' => $fileName,
