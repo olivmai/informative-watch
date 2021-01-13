@@ -11,6 +11,8 @@ Homepage
             <div class="col col-xs-12">
                 {% include 'source/card.html.twig' %}
             </div>
+        {% else %}
+            <p class="col-12 alert alert-warning" role="alert">No data to display</p>
         {% endfor %}
     </div>
 {% endblock %}
