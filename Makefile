@@ -1,5 +1,6 @@
 start:
 	docker-compose up -d
+	@make fixtures
 	php -S localhost:8000
 
 stop:
@@ -13,6 +14,9 @@ phpstan:
 
 phpcs:
 	vendor/bin/php-cs-fixer fix src
+
+fixtures:
+	php tests/load-fixtures-script.php dev
 
 check:
 	@make phpcs

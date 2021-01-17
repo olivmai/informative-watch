@@ -3,9 +3,9 @@
 namespace App\Domain\InformationSource\Model;
 
 use App\Database\EntityInterface;
-use App\Database\PdoClient;
 use App\Database\RepositoryInterface;
 use App\Domain\InformationSource\InformationSourceException;
+use Exception;
 
 class InformationSourceModelManager implements ModelManagerInterface
 {
@@ -26,7 +26,7 @@ class InformationSourceModelManager implements ModelManagerInterface
         try {
             $id = $this->repository->insert($source);
             $source->setId($id);
-        } catch (InformationSourceException $exception) {
+        } catch (Exception $exception) {
             throw new InformationSourceException($exception->getMessage());
         }
 
@@ -42,7 +42,7 @@ class InformationSourceModelManager implements ModelManagerInterface
     {
         try {
             $id = $this->repository->delete($source->getId());
-        } catch (\Exception $exception) {
+        } catch (Exception $exception) {
             throw new InformationSourceException($exception->getMessage());
         }
 
