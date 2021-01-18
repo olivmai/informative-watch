@@ -24,6 +24,9 @@ class InformationSourceModelManagerTest extends TestCase
 {
     use InitDatabaseSchema;
 
+    /**
+     * @throws InformationSourceException
+     */
     protected function setUp(): void
     {
         parent::setUp();

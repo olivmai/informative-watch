@@ -39,6 +39,10 @@ class InformationSourceRepositoryTest extends TestCase
 
     /**
      * @covers \App\Domain\InformationSource\Model\InformationSourceRepository::insert
+     * @uses \App\Domain\InformationSource\Model\InformationSourceModelManager
+     * @uses \App\Domain\InformationSource\Model\InformationSource
+     * @uses \App\Database\AbstractPdoClient
+     * @uses \App\Database\PdoClient
      * @throws InformationSourceException
      * @throws Exception
      */

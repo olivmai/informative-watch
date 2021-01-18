@@ -30,10 +30,10 @@ class InformationSourceRepository implements RepositoryInterface
         try {
             $stmt = $this->dbClient->getConnexion()->prepare("INSERT INTO sources (title, url, image, description) VALUES (:title, :url, :image, :description)");
 
-            $stmt->bindParam(':title', $data['title'], PDO::PARAM_STR);
-            $stmt->bindParam(':url', $data['url'], PDO::PARAM_STR);
-            $stmt->bindParam(':image', $data['image'], PDO::PARAM_STR);
-            $stmt->bindParam(':description', $data['description'], PDO::PARAM_STR);
+            $stmt->bindParam(':title', $data['title']);
+            $stmt->bindParam(':url', $data['url']);
+            $stmt->bindParam(':image', $data['image']);
+            $stmt->bindParam(':description', $data['description']);
 
             $stmt->execute();
         } catch (PDOException $exception) {
