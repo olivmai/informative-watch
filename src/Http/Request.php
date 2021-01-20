@@ -30,16 +30,28 @@ class Request implements RequestInterface
         return $this->path;
     }
 
+    /**
+     * @param array $parameters
+     * @codeCoverageIgnore
+     */
     public function setParameters(array $parameters = []): void
     {
         $this->parameters = $parameters;
     }
 
+    /**
+     * @param string|null $method
+     * @codeCoverageIgnore
+     */
     public function setMethod(?string $method): void
     {
         $this->method = $method;
     }
 
+    /**
+     * @param string|null $path
+     * @codeCoverageIgnore
+     */
     public function setPath(?string $path): void
     {
         $this->path = $path;

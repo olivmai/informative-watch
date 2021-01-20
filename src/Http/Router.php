@@ -23,7 +23,7 @@ class Router
      * @param RequestInterface $request
      * @throws Exception
      */
-    public function handle(RequestInterface $request): void
+    public function handle(RequestInterface $request)
     {
         switch ($request->getPath()) {
             default:
@@ -32,7 +32,7 @@ class Router
                 $manager = new InformationSourceModelManager($repo);
                 $listController = new InformationSourceListController($manager, $this->view);
                 http_response_code(200);
-                echo($listController());
+                return $listController();
                 break;
             case '/admin':
                 http_response_code(200);
@@ -40,7 +40,7 @@ class Router
                 break;
             case '/new':
                 http_response_code(200);
-                echo $this->view->render('source/new.html.twig');
+                return $this->view->render('source/new.html.twig');
                 break;
             case '/source/new':
                 $repo = new InformationSourceRepository(PdoClient::getInstance());

@@ -7,3 +7,4 @@
 /public/upload/*
 /.phpunit.cache/
 /tests/coverage/
+.DS_Store

@@ -22,4 +22,6 @@ $request->setMethod($_SERVER['REQUEST_METHOD']);
 $request->setParameters(array_merge($_REQUEST, $files));
 
 $router = new Router(new Twig());
-$router->handle($request);
+
+$response = $router->handle($request);
+echo $response;

@@ -21,7 +21,6 @@ class InformationSourceDataProvider
             'url' => 'https://youtu.be/cWyOA0iIqKc',
             'image' => 'lior-chamla.jpeg',
             'description' => 'Vidéo live coding de Lior Chamla',
-            'error' => 'bug',
         ]);
     }
 }

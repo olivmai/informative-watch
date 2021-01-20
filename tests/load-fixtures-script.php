@@ -26,5 +26,5 @@ try {
     echo $exception->getMessage();
 }
 
-echo "Fixtures loaded successfully";
+echo "Fixtures loaded successfully \n";
 

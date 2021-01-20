@@ -23,4 +23,9 @@ class StringUtility
 
         return $text;
     }
+
+    public static function getArrayFromString(string $string, string $separator = '.'): array
+    {
+        return explode($separator, $string);
+    }
 }
