@@ -92,7 +92,7 @@ class InformationSourceTest extends TestCase
     public function testSetDescription(): void
     {
         $newDescription = "let's make it shorter, to avoid time waste";
-        $this->informationSource->setDescription($newDescription, $this->informationSource->getDescription());
+        $this->informationSource->setDescription($newDescription);
 
         self::assertEquals($newDescription, $this->informationSource->getDescription());
     }

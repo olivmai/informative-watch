@@ -3,6 +3,8 @@
 namespace App\Domain\InformationSource\Controller;
 
 use App\Domain\InformationSource\Model\ModelManagerInterface;
+use App\Http\Response;
+use App\Http\ResponseInterface;
 use App\View\ViewInterface;
 
 class InformationSourceListController
@@ -16,11 +18,13 @@ class InformationSourceListController
         $this->view = $view;
     }
 
-    public function __invoke(): string
+    public function __invoke(): ResponseInterface
     {
         $sources = $this->manager->findAll();
-        return $this->view->render('homepage.html.twig', [
+        $template = $this->view->render('homepage.html.twig', [
             'sources' => $sources
         ]);
+
+        return new Response('template', $template);
     }
 }

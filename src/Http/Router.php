@@ -21,9 +21,10 @@ class Router
 
     /**
      * @param RequestInterface $request
+     * @return ResponseInterface
      * @throws Exception
      */
-    public function handle(RequestInterface $request)
+    public function handle(RequestInterface $request): ResponseInterface
     {
         switch ($request->getPath()) {
             default:
@@ -33,20 +34,27 @@ class Router
                 $listController = new InformationSourceListController($manager, $this->view);
                 http_response_code(200);
                 return $listController();
-                break;
             case '/admin':
                 http_response_code(200);
-                echo $this->view->render('admin.html.twig');
-                break;
+                return new Response('template', $this->view->render('admin.html.twig'));
             case '/new':
                 http_response_code(200);
-                return $this->view->render('source/new.html.twig');
-                break;
+                return new Response('template', $this->view->render('source/new.html.twig'));
             case '/source/new':
                 $repo = new InformationSourceRepository(PdoClient::getInstance());
                 $manager = new InformationSourceModelManager($repo);
-                (new InformationSourceController($manager))->addNewSource($request);
-                break;
+                return (new InformationSourceController($manager))->addNewSource($request);
+        }
+    }
+
+    public function handleResponse(ResponseInterface $response): void
+    {
+        if ('template' === $response->getType()) {
+            echo $response->getContent();
+        }
+        if ('redirect' === $response->getType()) {
+            header($response->getContent());
+            exit();
         }
     }
 }

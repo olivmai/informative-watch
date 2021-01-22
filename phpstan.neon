@@ -3,3 +3,4 @@ parameters:
         - config/config.php
         - config/db_config_test.php
     checkMissingIterableValueType: false
+    checkGenericClassInNonGenericObjectType: false

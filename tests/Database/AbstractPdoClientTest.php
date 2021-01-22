@@ -14,17 +14,13 @@ use PHPUnit\Framework\TestCase;
  */
 class AbstractPdoClientTest extends TestCase
 {
-    private $newAnonymousClassFromAbstract;
+    private object $newAnonymousClassFromAbstract;
 
     protected function setUp(): void
     {
         parent::setUp();
         // Create a new instance from the Abstract Class
         $this->newAnonymousClassFromAbstract = new class extends AbstractPdoClient {
-            public function resetInstance(): void
-            {
-                self::$instance = null;
-            }
         };
     }
 

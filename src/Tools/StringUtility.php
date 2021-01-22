@@ -24,8 +24,17 @@ class StringUtility
         return $text;
     }
 
+    /**
+     * @param string $string
+     * @param string $separator
+     * @return array
+     */
     public static function getArrayFromString(string $string, string $separator = '.'): array
     {
-        return explode($separator, $string);
+        $explodedString = explode($separator, $string);
+        if (!is_array($explodedString)) {
+            return [];
+        }
+        return $explodedString;
     }
 }

@@ -24,4 +24,4 @@ $request->setParameters(array_merge($_REQUEST, $files));
 $router = new Router(new Twig());
 
 $response = $router->handle($request);
-echo $response;
+$router->handleResponse($response);
