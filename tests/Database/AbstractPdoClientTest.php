@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  */
 class AbstractPdoClientTest extends TestCase
 {
-    private object $newAnonymousClassFromAbstract;
+    private AbstractPdoClient $newAnonymousClassFromAbstract;
 
     protected function setUp(): void
     {

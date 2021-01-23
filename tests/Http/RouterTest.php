@@ -12,6 +12,7 @@ use PHPUnit\Framework\TestCase;
  * Class RouterTest
  * @package Test\Http
  * @covers \App\Http\Router
+ * @uses \App\Http\Response
  */
 class RouterTest extends TestCase
 {
@@ -34,8 +35,9 @@ class RouterTest extends TestCase
         ]);
 
         $router = new Router(new Twig());
+        $response = $router->handle($request);
 
-        self::assertStringContainsString('Homepage', $router->handle($request));
+        self::assertStringContainsString('Homepage', $response->getContent());
     }
 
     /**
@@ -52,7 +54,8 @@ class RouterTest extends TestCase
         ]);
 
         $router = new Router(new Twig());
+        $response = $router->handle($request);
 
-        self::assertStringContainsString('Ajouter une nouvelle source', $router->handle($request));
+        self::assertStringContainsString('Ajouter une nouvelle source', $response->getContent());
     }
 }

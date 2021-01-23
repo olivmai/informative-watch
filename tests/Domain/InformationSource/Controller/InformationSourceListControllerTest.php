@@ -6,6 +6,8 @@ use App\Database\PdoClient;
 use App\Domain\InformationSource\Controller\InformationSourceListController;
 use App\Domain\InformationSource\Model\InformationSourceModelManager;
 use App\Domain\InformationSource\Model\InformationSourceRepository;
+use App\Http\Response;
+use App\Http\ResponseInterface;
 use App\View\Twig;
 use PHPUnit\Framework\TestCase;
 
@@ -18,6 +20,7 @@ use PHPUnit\Framework\TestCase;
  * @uses App\Domain\InformationSource\Model\InformationSourceModelManager
  * @uses App\View\Twig
  * @uses App\Domain\InformationSource\Model\InformationSourceRepository
+ * @uses \App\Http\Response
  */
 class InformationSourceListControllerTest extends TestCase
 {
@@ -26,9 +29,11 @@ class InformationSourceListControllerTest extends TestCase
         $repo = new InformationSourceRepository(PdoClient::getInstance());
         $manager = new InformationSourceModelManager($repo);
         $listController = new InformationSourceListController($manager, new Twig());
-        $renderedHtml = $listController();
+        $response = $listController();
 
-        self::assertIsString($renderedHtml);
-        self::assertStringContainsString('Homepage', $renderedHtml);
+        self::assertInstanceOf(ResponseInterface::class, $response);
+        self::assertEquals('template', $response->getType());
+        self::assertIsString($response->getContent());
+        self::assertStringContainsString('Homepage', $response->getContent());
     }
 }
