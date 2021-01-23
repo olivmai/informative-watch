@@ -15,7 +15,7 @@ abstract class AbstractPdoClient
      * PdoClient should be instanciate via PdoClient::getInstance().
      * Only purpose of this constructor is to set up config settings for pdo instance
      */
-    protected function __construct()
+    public function __construct()
     {
         $pdo_dsn = 'mysql:host=' . SERVER . ':' . PORT . ';dbname=' . DB_NAME;
         $this->connexion = new PDO($pdo_dsn, DB_USER, DB_PASSWD);

@@ -7,6 +7,7 @@ stop:
 	docker-compose stop
 
 test:
+	@make fixtures-test
 	php vendor/bin/phpunit -c phpunit.xml --coverage-html tests/coverage
 
 phpstan:
@@ -17,6 +18,9 @@ phpcs:
 
 fixtures:
 	php tests/load-fixtures-script.php dev
+
+fixtures-test:
+	php tests/load-fixtures-script.php test
 
 check:
 	@make phpcs

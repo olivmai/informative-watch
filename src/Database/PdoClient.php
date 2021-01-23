@@ -9,6 +9,7 @@ class PdoClient extends AbstractPdoClient implements DatabaseClientInterface
     public static ?PdoClient $instance = null;
     public PDO $connexion;
 
+    /** @codeCoverageIgnore  */
     private function __clone()
     {
     }

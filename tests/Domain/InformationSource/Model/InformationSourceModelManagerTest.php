@@ -40,7 +40,6 @@ class InformationSourceModelManagerTest extends TestCase
     }
 
     /**
-     * @covers \App\Domain\InformationSource\Model\InformationSourceModelManager::save
      * @throws InformationSourceException
      */
     public function testCanCreateInformationSource(): void
@@ -55,7 +54,6 @@ class InformationSourceModelManagerTest extends TestCase
     }
 
     /**
-     * @covers \App\Domain\InformationSource\Model\InformationSourceModelManager::delete
      * @throws InformationSourceException
      */
     public function testCanDeleteInformationSource(): void
@@ -73,5 +71,14 @@ class InformationSourceModelManagerTest extends TestCase
         $sourceDeleted = $infoSrcManager->find($sourceSaved->getId());
 
         self::assertNull($sourceDeleted);
+    }
+
+    public function testCanFindAll(): void
+    {
+        $infoSrcManager = new InformationSourceModelManager(new InformationSourceRepository(PdoClient::getInstance()));
+        $allSources = $infoSrcManager->findAll();
+
+        self::assertIsArray($allSources);
+        self::assertCount(6, $allSources);
     }
 }

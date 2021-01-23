@@ -5,6 +5,8 @@ namespace App\Domain\InformationSource\Controller;
 use App\Domain\InformationSource\Model\InformationSourceFactory;
 use App\Domain\InformationSource\Model\ModelManagerInterface;
 use App\Http\RequestInterface;
+use App\Http\Response;
+use App\Http\ResponseInterface;
 use App\Tools\FileUploader;
 use Exception;
 
@@ -19,9 +21,10 @@ class InformationSourceController
 
     /**
      * @param RequestInterface $request
+     * @return ResponseInterface
      * @throws Exception
      */
-    public function addNewSource(RequestInterface $request): void
+    public function addNewSource(RequestInterface $request): ResponseInterface
     {
         $params = $request->getParameters() ?: [];
 
@@ -45,7 +48,6 @@ class InformationSourceController
 
         $this->sourceManager->save($newSource);
 
-        header('Location: ' . $_SERVER['SERVER_NAME']);
-        exit();
+        return new Response('redirect', 'Location: ' . APP_ROOT_URL);
     }
 }
