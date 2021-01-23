@@ -1,4 +1,4 @@
-#Informative watch tool
+# Informative watch tool
 
 Small php app to register useful and/or interesting sources to keep up-to-date on anything you have interest on.
 
@@ -8,6 +8,14 @@ Small php app to register useful and/or interesting sources to keep up-to-date o
 
 You can have the app running locally by simply linking a database (running your database locally or via docker container for example) and then :
 
-- update file ```config/db_config.php```
-- run ```php -S localhost:8000```
+- create / update file ```config/db_config.php``` according to ```config/db_config.php.dist```
+- run ```make start```
 - browse your [Localhost](http://localhost:8000)
+
+## Quality tools
+
+You can run ```make check``` at any moment, it will run :
+
+- php-cs-fixer
+- phpstan analyze at highest level
+- phpunit tests suite
