@@ -22,6 +22,9 @@ fixtures:
 fixtures-test:
 	php tests/load-fixtures-script.php test
 
+bash-db:
+	docker exec -i info_watch_test_sql bash
+
 check:
 	@make phpcs
 	@make phpstan
